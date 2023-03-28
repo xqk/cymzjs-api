@@ -1,0 +1,294 @@
+info(
+	title: "崇阳民政祭扫接口"
+	desc: ""
+	author: "xqk"
+	email: "xiaqiankun@outlook.com"
+	version: "1.0.0"
+)
+
+
+type (
+	GrjResp {
+		Code int64 `json:"code"`
+		Data interface{} `json:"data"`
+		Count int64 `json:"count"`
+		TotalValue int64 `json:"totalValue"`
+		TotalInfo interface{} `json:"totalInfo"`
+	}
+	LoginReq {
+		Code string `json:"code"`
+	}
+	LoginResp {
+		UserId int64 `json:"userId"`
+		Token string `json:"token"`
+		SellerId int64 `json:"sellerId"`
+		Avatar string `json:"avatar"`
+		Nickname string `json:"nickname"`
+	}
+	LogReq {
+		Id int64 `json:"id"`
+		Page string `json:"p"`
+		Params string `json:"ps"`
+		Action string `json:"act"`
+		StartTime int64 `json:"st"`
+		EndTime int64 `json:"et"`
+	}
+	FindMemorialFeteHomePageReq {
+		Id int64 `json:"id"`
+	}
+	FindMemorialFeteHomePageResp {
+		Hudie []string `json:"hudie"`
+		Pinyao []string `json:"pinyao"`
+		Peiji []string `json:"peiji"`
+		Xianheshengui []string `json:"xianheshengui"`
+		Saomu []string `json:"saomu"`
+		Xianhuabsdz []string `json:"xianhuabsdz"`
+		Lazhu []string `json:"lazhu"`
+		Chajiu []string `json:"chajiu"`
+		Jibai []string `json:"jibai"`
+		Bianpao []string `json:"bianpao"`
+		Guangyun []string `json:"guangyun"`
+		Xianglu []string `json:"xianglu"`
+		Saomubsdz []string `json:"saomubsdz"`
+		BianpaoMusic []string `json:"bianpaoMusic"`
+		Xianhua []string `json:"xianhua"`
+		UserFeteList []string `json:"userFeteList"`
+		BackgroundMusicName string `json:"backgroundMusicName"`
+		BackgroundMusicUrl string `json:"backgroundMusicUrl"`
+		MemorialInfo *MemorialInfo `json:"memorialInfo"`
+	}
+	MemorialInfo {
+		Id int64 `json:"id"`
+		MemorialNo string `json:"memorialNo"`
+		HeadImg string `json:"headImg"`
+		DefaultHeadImg string `json:"defaultHeadImg"`
+		Rahmen string `json:"rahmen"`
+		Homepage string `json:"homepage"`
+		BackgroundMusic string `json:"backgroundMusic"`
+		JntBackgroundMusic string `json:"jntBackgroundMusic"`
+		WltBackgroundMusic string `json:"wltBackgroundMusic"`
+		QftBackgroundMusic string `json:"qftBackgroundMusic"`
+		BackgroundMusicName string `json:"backgroundMusicName"`
+		JntBackgroundMusicName string `json:"jntBackgroundMusicName"`
+		WltBackgroundMusicName string `json:"wltBackgroundMusicName"`
+		QftBackgroundMusicName string `json:"qftBackgroundMusicName"`
+		Name string `json:"name"`
+		Relation string `json:"relation"`
+		Birthdate string `json:"birthdate"`
+		Deathdate string `json:"deathdate"`
+		Remark string `json:"remark"`
+		Blog string `json:"blog"`
+		JntBackgroundImage string `json:"jntBackgroundImage"`
+		WltBackgroundImage string `json:"wltBackgroundImage"`
+		QftBackgroundImage string `json:"qftBackgroundImage"`
+	}
+	GetMemorialFormReq {
+		Id int64 `json:"id"`
+	}
+	MemorialForm {
+		HeadImg string `json:"headImg"`
+		NameOne string `json:"nameOne"`
+		NameTwo string `json:"nameTwo"`
+		RelationOne string `json:"relationOne"`
+		RelationTwo string `json:"relationTwo"`
+		VisitCount int64 `json:"visitCount"`
+	}
+	PostMemorialFormResp {
+		Id int64 `json:"id"`
+	}
+	QiniuTokenReq {
+		Bucket int64 `json:"bucket" v:"required|min:1#bucket不得为空|bucket不得为空"`
+	}
+	BannerFindBannerListReq {
+		Type int64 `json:"type"`
+	}
+	BannerFindBannerListItem {
+		Id string `json:"id"`
+		Name string `json:"name"`
+		ImageUrl string `json:"imageUrl"`
+		TargetUrl string `json:"targetUrl"`
+		PageUrl string `json:"pageUrl"`
+		SortNo int64 `json:"sortNo"`
+		Type int64 `json:"type"`
+		IsAble int64 `json:"isAble"`
+		OptId string `json:"optId"`
+		OptName string `json:"optName"`
+		CreateTime int64 `json:"createTime"`
+		UpdateTime int64 `json:"updateTime"`
+	}
+	MemorialFindTopMemorialListItem {
+		Id string `json:"id"`
+		MemorialNo string `json:"memorialNo"`
+		CloudMemorialNo string `json:"cloudMemorialNo"`
+		HeadImageUrl string `json:"headImageUrl"`
+		DefaultHeadImageUrl string `json:"defaultHeadImageUrl"`
+		Homepage string `json:"homepage"`
+		Name string `json:"name"`
+		Relation string `json:"relation"`
+		Prefix string `json:"prefix"`
+		VisitCount int64 `json:"visitCount"`
+		Type string `json:"type"`
+		Title string `json:"title"`
+		Description string `json:"description"`
+		Label string `json:"label"`
+		SortNo int64 `json:"sortNo"`
+		IsReward int64 `json:"isReward"`
+		CreateTime int64 `json:"createTime"`
+		UpdateTime int64 `json:"updateTime"`
+	}
+	FindSystemFeteSceneReq {
+		
+	}
+	FindSystemFeteSceneItem {
+		Id string `json:"id"`
+		Name string `json:"name"`
+		OptId string `json:"optId"`
+		OptName string `json:"optName"`
+		SortNo int64 `json:"sortNo"`
+		ImageUrl string `json:"imageUrl"`
+		MusicUrl string `json:"musicUrl"`
+		ObjectId string `json:"objectId"`
+		SceneType string `json:"sceneType"`
+		CreateTime int64 `json:"createTime"`
+		ObjectType string `json:"objectType"`
+		PreviewUrl string `json:"previewUrl"`
+		UpdateTime int64 `json:"updateTime"`
+		SceneTypeName string `json:"sceneTypeName"`
+	}
+	FindSystemFeteSceneResp {
+		Hudie []*FindSystemFeteSceneItem `json:"hudie,omitempty"`
+		Lazhu []*FindSystemFeteSceneItem `json:"lazhu,omitempty"`
+		Muhua []*FindSystemFeteSceneItem `json:"muhua,omitempty"`
+		Saomu []*FindSystemFeteSceneItem `json:"saomu,omitempty"`
+		Guibai []*FindSystemFeteSceneItem `json:"guibai,omitempty"`
+		Rahmen []*FindSystemFeteSceneItem `json:"rahmen,omitempty"`
+		Xianhe []*FindSystemFeteSceneItem `json:"xianhe,omitempty"`
+		Bianpao []*FindSystemFeteSceneItem `json:"bianpao,omitempty"`
+		Message []*FindSystemFeteSceneItem `json:"message,omitempty"`
+		Xianglu []*FindSystemFeteSceneItem `json:"xianglu,omitempty"`
+		Xianhua []*FindSystemFeteSceneItem `json:"xianhua,omitempty"`
+		Guangyun []*FindSystemFeteSceneItem `json:"guangyun,omitempty"`
+		Bianpaomusic []*FindSystemFeteSceneItem `json:"bianpaomusic,omitempty"`
+		Yindaofooter []*FindSystemFeteSceneItem `json:"yindaofooter,omitempty"`
+		Yindaoheader []*FindSystemFeteSceneItem `json:"yindaoheader,omitempty"`
+		Xianheshengui []*FindSystemFeteSceneItem `json:"xianheshengui,omitempty"`
+		Jianguanfooter []*FindSystemFeteSceneItem `json:"jianguanfooter,omitempty"`
+		Jianguanheader []*FindSystemFeteSceneItem `json:"jianguanheader,omitempty"`
+		Backgroundimage []*FindSystemFeteSceneItem `json:"backgroundimage,omitempty"`
+		Backgroundmusic []*FindSystemFeteSceneItem `json:"backgroundmusic,omitempty"`
+		Peiji []*FindSystemFeteSceneItem `json:"peiji,omitempty"`
+		Daonian []*FindSystemFeteSceneItem `json:"daonian,omitempty"`
+		Pingdao []*FindSystemFeteSceneItem `json:"pingdao,omitempty"`
+		Jingxiang []*FindSystemFeteSceneItem `json:"jingxiang,omitempty"`
+	}
+	FindPlatformMemorialConfigItem {
+		Id string `json:"id"`
+		Name string `json:"name"`
+		OptId string `json:"optId"`
+		OptName string `json:"optName"`
+		IsAble int64 `json:"isAble"`
+		HeadImage string `json:"headImage"`
+		CreateTime int64 `json:"createTime"`
+		PlatformId string `json:"platformId"`
+		UpdateTime int64 `json:"updateTime"`
+		BackgroundImage string `json:"backgroundImage"`
+		NameOne string `json:"nameOne"`
+		NameTwo string `json:"nameTwo"`
+		RelationOne string `json:"relationOne"`
+		RelationTwo string `json:"relationTwo"`
+	}
+	FindPlatformDetailsReq {
+		
+	}
+	FindPlatformDetailsResp {
+		Id string `json:"id"`
+		Name string `json:"name"`
+		Label string `json:"label"`
+		Mobile string `json:"mobile"`
+		CreateTime int64 `json:"createTime"`
+		Enterprise string `json:"enterprise"`
+		MobileDesc string `json:"mobileDesc"`
+		UpdateTime int64 `json:"updateTime"`
+		VisitCount int64 `json:"visitCount"`
+	}
+	FindPlatformEnterpriseDetailReq {
+		
+	}
+	FindPlatformEnterpriseDetailResp {
+		Id string `json:"id"`
+		Name string `json:"name"`
+		OptId string `json:"optId"`
+		CreateTime int64 `json:"createTime"`
+		PlatformId string `json:"platformId"`
+		UpdateTime int64 `json:"updateTime"`
+		Description string `json:"description"`
+		PlatformName string `json:"platformName"`
+	}
+	FindPlatformMemorialConfigDetailReq {
+		Id string `json:"id"`
+	}
+)
+
+@server()
+service cymzjs-api {
+	@doc "获取七牛token"
+	@handler QiniuToken
+	get /api/qiniu/token (QiniuTokenReq)
+	
+	@doc "登录接口"
+	@handler Login
+	post /api/login (LoginReq) returns (LoginResp)
+	
+	@doc "日志接口"
+	@handler Log
+	get /api/log (LogReq)
+	
+	@doc "banner"
+	@handler BannerFindBannerList
+	get /api/banner/findBannerList (BannerFindBannerListReq)
+	
+	@doc "首页推荐纪念"
+	@handler MemorialFindTopMemorialList
+	get /api/memorial/findTopMemorialList ()
+	
+	@doc "系统宴会场景-平台"
+	@handler FindSystemFeteScenePlatform
+	get /api/system/feteScene/findSystemFeteScenePlatform (FindSystemFeteSceneReq) returns (FindSystemFeteSceneResp)
+	
+	@doc "系统宴会场景-云祭扫"
+	@handler FindSystemFeteSceneCloudMourn
+	get /api/system/feteScene/findSystemFeteSceneCloudMourn (FindSystemFeteSceneReq) returns (FindSystemFeteSceneResp)
+	
+	@doc "平台快速扫墓配置"
+	@handler FindPlatformMemorialConfig
+	get /api/platform/platform/findPlatformMemorialConfig ()
+	
+	@doc "平台快速扫墓配置"
+	@handler FindPlatformMemorialConfigDetail
+	get /api/platform/platform/findPlatformMemorialConfigDetail (FindPlatformMemorialConfigDetailReq) returns (FindPlatformMemorialConfigItem)
+	
+	@doc "平台详情"
+	@handler FindPlatformDetails
+	get /api/platform/platform/findPlatformDetails (FindPlatformDetailsReq) returns (FindPlatformDetailsResp)
+	
+	@doc "平台企业详情"
+	@handler FindPlatformEnterpriseDetail
+	get /api/platform/enterprise/findPlatformEnterpriseDetail (FindPlatformEnterpriseDetailReq) returns (FindPlatformEnterpriseDetailResp)
+}
+
+@server(
+	jwt: Auth
+)
+service cymzjs-api {
+	@doc "获取表单信息"
+	@handler GetMemorialForm
+	get /api/memorial/get/form (GetMemorialFormReq) returns (MemorialForm)
+	
+	@doc "保存表单信息"
+	@handler PostMemorialForm
+	post /api/memorial/post/form (MemorialForm) returns (PostMemorialFormResp)
+	
+	@doc "怀念详情接口"
+	@handler FindMemorialFeteHomePage
+	get /api/memorial/findMemorialFeteHomePage (FindMemorialFeteHomePageReq) returns (FindMemorialFeteHomePageResp)
+}

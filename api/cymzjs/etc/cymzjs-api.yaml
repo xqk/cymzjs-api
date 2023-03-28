@@ -1,0 +1,21 @@
+Name: cymzjs-api
+Host: 0.0.0.0
+Port: 8887
+
+Auth:
+  AccessSecret: 6bc541b3a58c5dbb99d82bc481d7531b9a081ff2725d4c15adb85a8d27b52a33
+  AccessExpire: 31536000
+
+AppId: wxe9e1a009ae500fb3
+AppSecret:
+
+Cache:
+  - Host: 127.0.0.1:6379
+    Password:
+
+Mysql:
+  Cymzjs: root:asdfasdf@tcp(127.0.0.1:3306)/cymzjs?charset=utf8mb4&parseTime=true
+
+QiniuZhuKe:
+  AK: A7mhBWEtNNUsNMs_dK7JC6jSYkvMbhtod0sFP_BH
+  SK: _Hwnc0quKz3uQZBBanTG0ANpI4DtG3byzdVPWY1s
